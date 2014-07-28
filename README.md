@@ -101,6 +101,9 @@ source /etc/profile
 #初始化portage树
 mkdir -p /usr/portage
 
+echo 'GENTOO_MIRRORS="http://mirrors.163.com/gentoo/"' >> /etc/portage/make.conf
+echo 'SYNC="rsync://rsync2.cn.gentoo.org/gentoo-portage"' >> /etc/portage/make.conf
+
 emerge-webrsync
 
 #设置时区
