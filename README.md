@@ -1,10 +1,6 @@
-#gentoo_install
-#==============
-
 #安装Gentoo流程记录
 
-#ultraiso写入硬盘镜像到U盘
-#用U盘启动
+#ultraiso写入硬盘镜像到U盘，用U盘启动
 
 #磁盘分区
 fdisk /dev/sda
@@ -16,23 +12,14 @@ fdisk /dev/sda
 
 # 创建LVM分区
 pvcreate /dev/sda5
-
 vgcreate vg /dev/sda5
-
 lvcreate -L8G -nusr vg
-
 lvcreate -L8G -nportage vg
-
 lvcreate -L8G -nvartmp vg
-
 lvcreate -L6G -ndistfiles vg
-
 lvcreate -L6G -nopt vg
-
 lvcreate -L6G -nvar vg
-
 lvcreate -L6G -ntmp vg
-
 lvcreate -L9G -nhome vg
 
 #格式化
