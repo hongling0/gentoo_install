@@ -11,15 +11,25 @@ fdisk /dev/sda
 ### /dev/sda5 逻辑分区
 
 # 创建LVM分区
+
 pvcreate /dev/sda5
+
 vgcreate vg /dev/sda5
+
 lvcreate -L8G -nusr vg
+
 lvcreate -L8G -nportage vg
+
 lvcreate -L8G -nvartmp vg
+
 lvcreate -L6G -ndistfiles vg
+
 lvcreate -L6G -nopt vg
+
 lvcreate -L6G -nvar vg
+
 lvcreate -L6G -ntmp vg
+
 lvcreate -L9G -nhome vg
 
 #格式化
