@@ -96,6 +96,7 @@ tar xjpf stage3*
 
 #chroot
 cd /
+
 mount -t proc proc /mnt/gentoo/proc
 
 mount --rbind /dev /mnt/gentoo/dev
@@ -111,7 +112,8 @@ source /etc/profile
 #初始化portage树
 mkdir -p /usr/portage
 
-echo 'GENTOO_MIRRORS="http://mirrors.163.com/gentoo/"' >> /etc/portage/make.conf
+echo 'GENTOO_MIRRORS="http://mirrors.163.com/gentoo/"' >> /etc/portage/make.
+
 echo 'SYNC="rsync://rsync2.cn.gentoo.org/gentoo-portage"' >> /etc/portage/make.conf
 
 emerge-webrsync
@@ -132,6 +134,7 @@ eselect profile set 1
 
 #设置hostname
 cd /etc
+
 echo "127.0.0.1 gentoo.at.linux gentoo localhost" > hosts
 
 sed -i -e 's/hostname.*/hostname="gentoo"/' conf.d/hostname
@@ -170,6 +173,7 @@ echo 'FEATURES="ccache userfetch parallel-fetch"' >>/etc/portage/make.conf
 
 #编译initramfs
 emerge genkernel
+
 genkernel --install --no-ramdisk-modules --lvm --mdadm initramfs
 
 #编写 fstab
@@ -198,6 +202,7 @@ cat > fstab << EOF
 /dev/vg/var       /var                    ext3  noatime         1 2
 
 /dev/vg/vartmp    /var/tmp                ext2  noatime         1 2
+
 EOF
 
 #设置网卡启动 ifconfig | grep flag | awk -F: '{print $1}' | grep -v lo
